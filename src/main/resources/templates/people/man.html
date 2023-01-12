@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div style="display: flex; flex-direction: column; text-align: center">
+    <div style="margin-bottom: 10px;">
+        <h1 style="margin-bottom: 10px;" th:text="${man.getName() + ', ' + man.getYearOfBirth() + 'г'}"></h1>
+        <div th:if="${books.size() != 0}">
+            <h3>Книги:</h3>
+            <div th:each="book : ${books}">
+                <p th:text="${book.getName() + ', ' + book.getAuthor() + ', ' + book.getDate()}"></p>
+            </div>
+        </div>
+        <div th:unless="${books.size() != 0}">
+            Человек пока не взял ни одной книги
+        </div>
+    </div>
+
+    <a style="margin-bottom: 5px;" th:href="@{/people/{id}/edit(id=${man.getId()})}">
+        Редактировать
+    </a>
+
+    <form style="margin-bottom: 10px;" th:action="@{/people/{id}/delete(id=${man.getId()})}" th:method="post">
+        <input type="submit" value="Удалить">
+    </form>
+    <a th:href="@{/people}">На страницу всех людей</a>
+</div>
+
+</body>
+</html>

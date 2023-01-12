@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1 style="text-align: center">Все книги</h1>
+
+<div th:if="${books.size() != 0}" style="display: flex; flex-direction: column; text-align: center; margin-bottom: 20px;">
+    <div th:each="book : ${books}">
+        <a th:href="@{/books/{id}(id=${book.getId()})}" th:text="${book.getName() + ', ' + book.getAuthor() + ', ' + book.getDate()}"></a>
+    </div>
+</div>
+
+<a style="text-align: center; display: block; margin-bottom: 30px;" th:href="@{/books/new}">Добавить книгу</a>
+
+<a style="text-align: center; display: block" th:href="@{/people}">На страницу с людьми</a>
+
+</body>
+</html>

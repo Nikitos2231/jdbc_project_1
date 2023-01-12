@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1 style="text-align: center">Создать книгу</h1>
+<form th:action="@{/books/new}" th:object="${book}" th:method="post" style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 20px;">
+    <label for="name">Введите название: </label>
+    <input type="text" id="name" th:field="*{name}">
+    <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+    <br>
+    <label for="date">Введите дату: </label>
+    <input id="date" type="date" th:field="*{date}">
+    <div style="color: red" th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></div>
+    <br>
+    <label for="author">Введите автора: </label>
+    <input id="author" type="text" th:field="*{author}">
+    <div style="color: red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></div>
+    <br>
+    <input type="submit" value="Create!">
+</form>
+
+<a style="text-align: center; display: block" th:href="@{/books}">Назад на страницу с книгами</a>
+
+</body>
+</html>

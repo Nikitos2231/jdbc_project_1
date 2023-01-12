@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 style="text-align: center">Создать человека</h1>
+<form th:action="@{/people/new}" th:object="${man}" th:method="post" style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 20px;">
+    <label for="name">Введите ФИО: </label>
+    <input type="text" id="name" th:field="*{name}">
+    <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+    <br>
+    <label for="year_of_birth">Введите год рождения: </label>
+    <input id="year_of_birth" type="number" th:field="*{yearOfBirth}">
+    <div style="color: red" th:if="${#fields.hasErrors('yearOfBirth')}" th:errors="*{yearOfBirth}"></div>
+    <br>
+    <input type="submit" value="Create!">
+</form>
+
+<a style="text-align: center; display: block" th:href="@{/people}">Назад на страницу людей</a>
+</body>
+</html>

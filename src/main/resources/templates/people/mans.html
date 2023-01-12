@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1 style="text-align: center">Все люди</h1>
+
+<div style="display: flex; flex-direction: column; text-align: center; margin-bottom: 20px;" th:if="${people.size() != null}">
+    <div th:each="man : ${people}">
+        <a style="margin-bottom: 3px;" th:href="@{/people/{id}(id=${man.getId()})}" th:text="${man.getName() + ', ' + man.getYearOfBirth()}"></a>
+    </div>
+</div>
+
+<a style="text-align: center; display: block; margin-bottom: 30px;" th:href="@{/people/new}">Создать человека</a>
+
+<a style="text-align: center; display: block" th:href="@{/books}">Страница с книгами</a>
+
+</body>
+</html>
